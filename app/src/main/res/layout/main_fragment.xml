@@ -8,11 +8,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="8dp"
-        android:textColor="@android:color/holo_blue_light"/>
+        android:padding="130dp"
+        android:textColor="@android:color/holo_blue_dark"/>
 
     <Button
-        android:id="@+id/btn_one"
+        android:id="@+id/btnAdd"
         android:text="+"
         android:textColor="@android:color/holo_blue_dark"
         android:background="@color/colorWhite"
@@ -23,7 +23,7 @@
         android:layout_marginTop="490dp"/>
 
     <Button
-        android:id="@+id/btn_two"
+        android:id="@+id/btnSub"
         android:text="-"
         android:textColor="@android:color/holo_blue_dark"
         android:background="@color/colorWhite"

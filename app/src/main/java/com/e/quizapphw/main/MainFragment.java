@@ -13,13 +13,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.e.quizapphw.R;
 
+import java.util.Locale;
+
 public class MainFragment extends Fragment {
 
     private MainViewModel mViewModel;
+    private Button btnAdd, btnSub;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -34,6 +38,24 @@ public class MainFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        btnAdd =view.findViewById(R.id.btnAdd);
+        btnSub =view.findViewById(R.id.btnSub);
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mViewModel.counterAdd();
+                Log.d("ololo", "+");
+            }
+        });
+        btnSub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mViewModel.counterSub();
+                Log.d("ololo", "-");
+            }
+        });
     }
 
     @Override

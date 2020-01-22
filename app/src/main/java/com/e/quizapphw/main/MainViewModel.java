@@ -13,6 +13,8 @@ public class MainViewModel extends ViewModel {
 
     public MutableLiveData<String> message = new MutableLiveData<>();
     //public MutableLiveData<Integer> number = new MutableLiveData<>(); - do not work with primitive objects
+    public MutableLiveData<Integer> counter = new MutableLiveData<>();
+    private int mCount = 0;
 
     public MainViewModel() {
 
@@ -29,13 +31,19 @@ public class MainViewModel extends ViewModel {
 //        Log.d("ololo", "Thread" + Thread.currentThread().getName()); // 1 - Threadmain
 
         Log.d("ololo", "View model created"); // 2 - View model created
-
         message.setValue("First"); // setValue()work's only in Threadmain
         message.setValue("First1");
         message.setValue("First2");
         message.setValue("First3"); // 4 - First3
-
         //message.postValue("");
+    }
+
+    public  void counterAdd(){
+        counter.setValue(mCount++);
+    }
+
+    public  void counterSub(){
+        counter.setValue(mCount--);
     }
 
     public void onLoginClick(){

@@ -1,7 +1,6 @@
 package com.e.quizapphw;
 
 import android.app.Application;
-
 import com.e.quizapphw.data.PreferenceHelper;
 
 public class MyApp extends Application {
@@ -11,5 +10,4 @@ public class MyApp extends Application {
         super.onCreate();
         PreferenceHelper.init(this);
     }
-
 }

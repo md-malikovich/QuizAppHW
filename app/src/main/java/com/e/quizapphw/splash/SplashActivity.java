@@ -1,11 +1,8 @@
 package com.e.quizapphw.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.os.Handler;
-
-import com.e.quizapphw.onboard.OnBoardActivity;
 import com.e.quizapphw.R;
 import com.e.quizapphw.data.PreferenceHelper;
 import com.e.quizapphw.main.MainActivity;
@@ -31,7 +28,6 @@ public class SplashActivity extends AppCompatActivity {
         } else {
             PreferenceHelper.setIsFirstLaunch();
             MainActivity.start(this);
-            //OnBoardActivity.start(this);
         }
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         finish();
