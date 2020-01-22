@@ -9,6 +9,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="8dp"
-        android:text="Hello" />
+        android:textColor="@android:color/holo_blue_light"/>
+
+    <Button
+        android:id="@+id/btn_one"
+        android:text="+"
+        android:textColor="@android:color/holo_blue_dark"
+        android:background="@color/colorWhite"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:shadowColor="@android:color/darker_gray"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="490dp"/>
+
+    <Button
+        android:id="@+id/btn_two"
+        android:text="-"
+        android:textColor="@android:color/holo_blue_dark"
+        android:background="@color/colorWhite"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:shadowColor="@android:color/darker_gray"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="550dp"/>
 
 </FrameLayout>

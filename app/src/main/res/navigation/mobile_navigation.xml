@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_main">
+
+    <fragment
+        android:id="@+id/navigation_main"
+        android:name="com.e.quizapphw.main.MainFragment"
+        android:label=""
+        tools:layout="@layout/main_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.e.quizapphw.history.HistoryFragment"
+        android:label="2"
+        tools:layout="@layout/history_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.e.quizapphw.settings.SettingsFragment"
+        android:label="3"
+        tools:layout="@layout/main_fragment" />
+</navigation>
