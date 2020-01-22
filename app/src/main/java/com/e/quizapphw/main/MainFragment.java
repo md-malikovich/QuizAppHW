@@ -49,6 +49,7 @@ public class MainFragment extends Fragment {
                 Log.d("ololo", "+");
             }
         });
+
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +62,7 @@ public class MainFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this) // or - getActivity()
+        mViewModel = ViewModelProviders.of(this)
                 .get(MainViewModel.class);
 
         mViewModel.message.observe(this, new Observer<String>() {

@@ -27,7 +27,7 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.main_fragment, container, false);
+        return inflater.inflate(R.layout.settings_fragment, container, false);
     }
 
     @Override
@@ -39,7 +39,8 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(getActivity()) // or - getActivity()
+
+        mViewModel = ViewModelProviders.of(getActivity())
                 .get(MainViewModel.class);
 
         mViewModel.counter.observe(this, new Observer<Integer>() {
@@ -49,7 +50,5 @@ public class SettingsFragment extends Fragment {
                 tvResult.setText(s);
             }
         });
-
-        //mViewModel.onLoginClick();
     }
 }

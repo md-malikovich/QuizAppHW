@@ -11,12 +11,10 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager.widget.ViewPager;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-
 import com.e.quizapphw.R;
 import com.e.quizapphw.history.HistoryFragment;
 import com.e.quizapphw.settings.SettingsFragment;
@@ -40,42 +38,12 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new MainPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mAdapter);
         navView = findViewById(R.id.nav_view);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration
-                .Builder(R.id.navigation_main, R.id.navigation_history, R.id.navigation_settings).build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(navView, navController);
+//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration
+//                .Builder(R.id.navigation_main, R.id.navigation_history, R.id.navigation_settings).build();
+//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+//        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+//        NavigationUI.setupWithNavController(navView, navController);
         setBottomNavigationView();
-    }
-
-    private class MainPagerAdapter extends FragmentPagerAdapter {
-
-        public MainPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            Fragment fragment;
-
-            switch (position) {
-                case 0:
-                    fragment = MainFragment.newInstance();
-                    break;
-                case 1:
-                    fragment = HistoryFragment.newInstance();
-                    break;
-                default:
-                    fragment = SettingsFragment.newInstance();
-                    break;
-            }
-            return fragment;
-        }
-
-        @Override
-        public int getCount() {
-            return 3;
-        }
     }
 
     private  void setBottomNavigationView() {
@@ -114,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                         navView.getMenu().getItem(1).setChecked(true);
                         break;
                     case 2:
-                        navView.getMenu().getItem(2).setChecked(false);
+                        navView.getMenu().getItem(2).setChecked(true);
                         break;
                 }
             }
@@ -125,6 +93,36 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private class MainPagerAdapter extends FragmentPagerAdapter {
+
+        public MainPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            Fragment fragment;
+
+            switch (position) {
+                case 0:
+                    fragment = MainFragment.newInstance();
+                    break;
+                case 1:
+                    fragment = HistoryFragment.newInstance();
+                    break;
+                default:
+                    fragment = SettingsFragment.newInstance();
+                    break;
+            }
+            return fragment;
+        }
+
+        @Override
+        public int getCount() {
+            return 3;
+        }
     }
 
     public static void start(Context context) {
