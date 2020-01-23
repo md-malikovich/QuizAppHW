@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                         navView.getMenu().getItem(1).setChecked(true);
                         break;
                     case 2:
-                        navView.getMenu().getItem(2).setChecked(true);
+                        navView.getMenu().getItem(2).setChecked(false);
                         break;
                 }
             }
