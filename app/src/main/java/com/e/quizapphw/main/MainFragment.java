@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.e.quizapphw.R;
 
 import java.util.Locale;
+import java.util.Objects;
 
 public class MainFragment extends Fragment {
 
@@ -62,7 +63,7 @@ public class MainFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this)
+        mViewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity()))
                 .get(MainViewModel.class);
 
         mViewModel.message.observe(this, new Observer<String>() {
@@ -71,7 +72,12 @@ public class MainFragment extends Fragment {
                 Log.d("ololo", s);
             }
         });
-
+        mViewModel.counter.observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                Log.d("TAG", "onChanged: "+integer);
+            }
+        });
         mViewModel.onLoginClick();
     }
 }

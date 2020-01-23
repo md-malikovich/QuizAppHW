@@ -38,12 +38,14 @@ public class MainViewModel extends ViewModel {
         //message.postValue("");
     }
 
-    public  void counterAdd(){
-        counter.setValue(mCount++);
+    public void counterAdd(){
+        mCount++;
+        counter.setValue(mCount);
     }
 
-    public  void counterSub(){
-        counter.setValue(mCount--);
+    public void counterSub(){
+        mCount--;
+        counter.setValue(mCount);
     }
 
     public void onLoginClick(){

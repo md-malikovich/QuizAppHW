@@ -16,7 +16,7 @@ import com.e.quizapphw.main.MainViewModel;
 
 public class SettingsFragment extends Fragment {
 
-    //private SettingsViewModel mViewModel;
+    private SettingsViewModel sViewModel;
     private MainViewModel mViewModel;
     private TextView tvResult;
 
@@ -40,14 +40,16 @@ public class SettingsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        sViewModel=ViewModelProviders.of(getActivity())
+                .get(SettingsViewModel.class);
+
         mViewModel = ViewModelProviders.of(getActivity())
                 .get(MainViewModel.class);
 
         mViewModel.counter.observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
-                String s = String.valueOf(integer);
-                tvResult.setText(s);
+                tvResult.setText(integer.toString());
             }
         });
     }
