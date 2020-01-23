@@ -66,33 +66,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                //
-            }
+        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 
             @Override
             public void onPageSelected(int position) {
-                switch (position) {
-                    case 0:
-                        navView.getMenu().getItem(0).setChecked(true);
-                        break;
-                    case 1:
-                        navView.getMenu().getItem(1).setChecked(true);
-                        break;
-                    case 2:
-                        navView.getMenu().getItem(2).setChecked(false);
-                        break;
-                }
-            }
+                navView.getMenu().getItem(position).setChecked(true);
 
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                //
+//                switch (position) {
+//                    case 0:
+//                        navView.getMenu().getItem(0).setChecked(true);
+//                        //navView.setSelectedItemId(R.id.navigation_main);
+//                        break;
+//                    case 1:
+//                        navView.getMenu().getItem(1).setChecked(true);
+//                        break;
+//                    case 2:
+//                        navView.getMenu().getItem(2).setChecked(false);
+//                        break;
+//                }
             }
         });
-
     }
 
     private class MainPagerAdapter extends FragmentPagerAdapter {
