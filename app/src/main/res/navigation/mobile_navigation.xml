@@ -8,18 +8,18 @@
     <fragment
         android:id="@+id/navigation_main"
         android:name="com.e.quizapphw.main.MainFragment"
-        android:label=""
+        android:label="Home"
         tools:layout="@layout/main_fragment" />
 
     <fragment
         android:id="@+id/navigation_history"
         android:name="com.e.quizapphw.history.HistoryFragment"
-        android:label="2"
+        android:label="History"
         tools:layout="@layout/history_fragment" />
 
     <fragment
         android:id="@+id/navigation_settings"
         android:name="com.e.quizapphw.settings.SettingsFragment"
-        android:label="3"
+        android:label="Settings"
         tools:layout="@layout/settings_fragment" />
 </navigation>

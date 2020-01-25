@@ -10,6 +10,5 @@ public class HistoryViewModel extends ViewModel {
     public HistoryViewModel() {
         Log.d("ololo", "History ViewModel created");
         history.setValue("First");
-        //message.postValue("");
     }
 }

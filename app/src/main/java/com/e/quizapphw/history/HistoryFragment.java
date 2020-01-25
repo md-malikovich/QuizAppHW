@@ -39,4 +39,3 @@ public class HistoryFragment extends Fragment {
         });
     }
 }
-//TODO: создать адаптер и вьюхолдер

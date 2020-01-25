@@ -6,13 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager.widget.ViewPager;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import com.e.quizapphw.R;
@@ -37,12 +31,8 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = findViewById(R.id.main_view_pager);
         mAdapter = new MainPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mAdapter);
+
         navView = findViewById(R.id.nav_view);
-//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration
-//                .Builder(R.id.navigation_main, R.id.navigation_history, R.id.navigation_settings).build();
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-//        NavigationUI.setupWithNavController(navView, navController);
         setBottomNavigationView();
     }
 
@@ -50,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
                     case R.id.navigation_main:
                         mViewPager.setCurrentItem(0);
                         break;
@@ -70,20 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                navView.getMenu().getItem(position).setChecked(true);
-
-//                switch (position) {
-//                    case 0:
-//                        navView.getMenu().getItem(0).setChecked(true);
-//                        //navView.setSelectedItemId(R.id.navigation_main);
-//                        break;
-//                    case 1:
-//                        navView.getMenu().getItem(1).setChecked(true);
-//                        break;
-//                    case 2:
-//                        navView.getMenu().getItem(2).setChecked(false);
-//                        break;
-//                }
+                navView.getMenu().getItem(position).setChecked(false);
             }
         });
     }
@@ -116,9 +93,5 @@ public class MainActivity extends AppCompatActivity {
         public int getCount() {
             return 3;
         }
-    }
-
-    public static void start(Context context) {
-        context.startActivity(new Intent(context, MainActivity.class));
     }
 }

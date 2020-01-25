@@ -4,17 +4,17 @@
 
     <item
         android:id="@+id/navigation_main"
-        android:icon="@drawable/ic_explore___active"
-        />
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
 
     <item
         android:id="@+id/navigation_history"
-        android:icon="@drawable/ic_map___inactive"
-        />
+        android:icon="@drawable/ic_history"
+        android:title="History" />
 
     <item
         android:id="@+id/navigation_settings"
-        android:icon="@drawable/ic_profile___inactive"
-        />
+        android:icon="@drawable/ic_settings"
+        android:title="Settings" />
 
 </menu>

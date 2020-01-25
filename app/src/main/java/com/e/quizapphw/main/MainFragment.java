@@ -2,23 +2,16 @@ package com.e.quizapphw.main;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
-
 import com.e.quizapphw.R;
-
-import java.util.Locale;
 import java.util.Objects;
 
 public class MainFragment extends Fragment {
@@ -39,25 +32,6 @@ public class MainFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        btnAdd =view.findViewById(R.id.btnAdd);
-        btnSub =view.findViewById(R.id.btnSub);
-
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mViewModel.counterAdd();
-                Log.d("ololo", "+");
-            }
-        });
-
-        btnSub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mViewModel.counterSub();
-                Log.d("ololo", "-");
-            }
-        });
     }
 
     @Override
@@ -72,12 +46,5 @@ public class MainFragment extends Fragment {
                 Log.d("ololo", s);
             }
         });
-        mViewModel.counter.observe(this, new Observer<Integer>() {
-            @Override
-            public void onChanged(Integer integer) {
-                Log.d("TAG", "onChanged: "+integer);
-            }
-        });
-        mViewModel.onLoginClick();
     }
 }
