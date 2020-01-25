@@ -5,28 +5,23 @@ import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import com.e.quizapphw.R;
+import com.e.quizapphw.core.CoreFragment;
 import java.util.Objects;
 
-public class MainFragment extends Fragment {
+public class MainFragment extends CoreFragment {
 
     private MainViewModel mViewModel;
-    private Button btnAdd, btnSub;
 
     public static MainFragment newInstance() {
         return new MainFragment();
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.main_fragment, container, false);
+    protected int getLayoutId() {
+        return R.layout.main_fragment;
     }
 
     @Override

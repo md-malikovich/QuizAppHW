@@ -16,15 +16,15 @@
 
     <style name="TitleText" parent="BoldText">
         <item name="android:textSize">24sp</item>
-        <item name="android:color">#000000</item>
+        <item name="android:color">@color/colorBlack</item>
     </style>
 
     <style name="RegularText">
-        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:fontFamily">@font/sf_pro_thin</item>
     </style>
 
     <style name="BoldText">
-        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:fontFamily">@font/sf_pro_thin</item>
         <item name="android:textStyle">bold</item>
     </style>
 
