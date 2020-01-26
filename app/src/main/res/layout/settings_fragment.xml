@@ -9,12 +9,12 @@
     <TextView
         android:id="@+id/tvSettings"
         style="@style/TitleText"
-        android:text="Settings"
+        android:text="@string/tv_settings"
         android:textColor="@color/colorBlack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginTop="@dimen/marginTop_32"
+        android:layout_marginStart="@dimen/marginStart_24"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 

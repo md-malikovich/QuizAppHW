@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">QuizAppHW</string>
+    <string name="tv_history">History</string>
+    <string name="tv_all">All</string>
+    <string name="tv_date">26 january 2020 21:21</string>
+    <string name="tv_difficulty">Difficulty:</string>
+    <string name="tv_8_10">8/10</string>
+    <string name="tv_correct_answers">Correct answers:</string>
+    <string name="tv_category_mixed">Category: Mixed</string>
+    <string name="tv_quiz">Quiz</string>
+    <string name="tv_questions_amount">Questions amount:</string>
+    <string name="tv_category">Category</string>
+    <string name="tv_main_difficulty">Difficulty</string>
+    <string name="btn_start">Start</string>
+    <string name="tv_settings">Settings</string>
 </resources>
