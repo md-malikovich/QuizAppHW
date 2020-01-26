@@ -15,7 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".result.ResultActivity"></activity>
+        <activity
+            android:name=".result.ResultActivity"
+            android:theme="@style/NoActionBar">
+        </activity>
+
         <activity
             android:name=".main.MainActivity"
             android:launchMode="singleTask"
@@ -26,6 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
