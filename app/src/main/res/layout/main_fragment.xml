@@ -58,7 +58,7 @@
         android:layout_width="@dimen/layout_width_290"
         android:layout_height="@dimen/layout_height_30"
         android:max="20"
-        android:progressBackgroundTint="@color/colorGrey"
+        android:progressBackgroundTint="@color/colorRose"
         android:progressTint="@color/colorBlue"
         android:progress="10"
         android:layout_marginTop="@dimen/marginTop_8"
