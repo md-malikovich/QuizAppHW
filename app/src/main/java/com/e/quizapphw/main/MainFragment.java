@@ -14,7 +14,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.e.quizapphw.R;
 import com.e.quizapphw.core.CoreFragment;
@@ -28,6 +30,8 @@ public class MainFragment extends CoreFragment {
     private MainViewModel mViewModel;
     private ImageView skip;
     Spinner spinnerCategory, spinnerDifficulty;
+    SeekBar seekBar;
+    TextView tvAmount;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -76,8 +80,25 @@ public class MainFragment extends CoreFragment {
                 startActivity(intent);
             }
         });
+
+        tvAmount = (TextView) getActivity().findViewById(R.id.tvAmount);
+        seekBar =  (SeekBar) getActivity().findViewById(R.id.seekBar);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                tvAmount.setText(String.valueOf(progress));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                //
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                //
+            }
+        });
+
     }
-
-
-
 }
