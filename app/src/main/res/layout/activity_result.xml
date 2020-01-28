@@ -126,6 +126,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="@dimen/marginBottom_80"
-        android:background="@drawable/rounded_btn2" />
+        android:background="@drawable/rounded_btn_green" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

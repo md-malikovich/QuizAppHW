@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".quiz.QuizActivity">
+
+    <LinearLayout
+        android:id="@+id/linearQuiz"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            android:layout_marginTop="@dimen/marginTop_24"
+            android:layout_marginStart="@dimen/marginStart_16" />
+
+        <TextView
+            android:id="@+id/tvQuizCategory"
+            android:layout_width="296dp"
+            android:layout_height="22dp"
+            style="@style/MiddleText"
+            android:textColor="@color/colorBlack"
+            android:text="Geography"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/marginTop_25" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBarQuiz"
+        android:layout_width="175dp"
+        android:layout_height="6dp"
+        android:indeterminate="false"
+        android:max="20"
+        android:progress="5"
+        android:secondaryProgress="50"
+        android:progressDrawable="@drawable/bg_progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_marginTop="@dimen/marginTop_29"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearQuiz"/>
+
+    <TextView
+        android:id="@+id/tvQuizProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5/10"
+        android:textSize="10dp"
+        android:textColor="@color/colorBlack"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progressBarQuiz"/>
+
+    <TextView
+        android:id="@+id/tvQuizQuestion"
+        android:layout_width="213dp"
+        android:layout_height="70dp"
+        android:text="What is the largest city and commercial capital of Sri Lanka?"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="@color/colorBlack"
+        android:layout_marginTop="49dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvQuizProgress"/>
+
+    <Button
+        android:id="@+id/btnAnswer1"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="52dp"
+        android:textColor="@color/colorWhite"
+        android:text="Colombo"
+        android:visibility="visible"
+        android:background="@drawable/rounded_btn_blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuizQuestion"/>
+
+    <Button
+        android:id="@+id/btnAnswer2"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/colorBlue"
+        android:text="Moratuwa"
+        android:visibility="visible"
+        android:background="@drawable/rounded_btn_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAnswer1"/>
+
+    <Button
+        android:id="@+id/btnAnswer3"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/colorBlue"
+        android:text="Negombo"
+        android:visibility="visible"
+        android:background="@drawable/rounded_btn_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAnswer2"/>
+
+    <Button
+        android:id="@+id/btnAnswer4"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/colorBlue"
+        android:text="Kandy"
+        android:visibility="visible"
+        android:background="@drawable/rounded_btn_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAnswer3"/>
+
+    <Button
+        android:id="@+id/btnSkip"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="124dp"
+        android:visibility="visible"
+        android:textColor="@color/colorWhite"
+        android:text="SKIP"
+        android:background="@drawable/rounded_btn_pink"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAnswer4"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

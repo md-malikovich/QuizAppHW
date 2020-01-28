@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.e.quizapphw.R;
 import com.e.quizapphw.core.CoreFragment;
+import com.e.quizapphw.quiz.QuizActivity;
 import com.e.quizapphw.result.ResultActivity;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class MainFragment extends CoreFragment {
     Spinner spinnerCategory, spinnerDifficulty;
     SeekBar seekBar;
     TextView tvAmount;
+    Button btnStart;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -72,6 +74,16 @@ public class MainFragment extends CoreFragment {
             }
         });
 
+        btnStart = (Button) getActivity().findViewById(R.id.btnStart);
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), QuizActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         skip = (ImageView) getActivity().findViewById(R.id.imgQuiz);
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +93,7 @@ public class MainFragment extends CoreFragment {
             }
         });
 
-        tvAmount = (TextView) getActivity().findViewById(R.id.tvAmount);
+        tvAmount = (TextView) getActivity().findViewById(R.id.tvMainAmount);
         seekBar =  (SeekBar) getActivity().findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override

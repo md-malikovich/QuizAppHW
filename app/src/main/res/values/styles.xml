@@ -14,10 +14,20 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
-    <style name="TitleText" parent="BoldText">
+    <style name="BigText" parent="BoldText">
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:color">@color/colorBlack</item>
+    </style>
+
+    <style name="MiddleText" parent="BoldText">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:color">@color/colorBlack</item>
+    </style>
+
+    <style name="SmallText" parent="BoldText">
+        <item name="android:textSize">15sp</item>
     </style>
 
     <style name="RegularText">
@@ -26,7 +36,11 @@
 
     <style name="BoldText">
         <item name="android:fontFamily">@font/sf_ui_display_bold</item>
+    </style>
 
+    <style name="MyProgressBarCircular" parent="@style/Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateTint">#b71c1c</item>
+        <item name="android:secondaryProgressTint">@color/colorProgressBar2</item>
     </style>
 
 </resources>

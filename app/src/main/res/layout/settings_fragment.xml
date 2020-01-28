@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/tvSettings"
-        style="@style/TitleText"
+        style="@style/BigText"
         android:text="@string/tv_settings"
         android:textColor="@color/colorBlack"
         android:layout_width="wrap_content"

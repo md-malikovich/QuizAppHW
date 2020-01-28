@@ -7,8 +7,8 @@
     tools:context=".main.MainFragment">
 
     <TextView
-        android:id="@+id/tvQuiz"
-        style="@style/TitleText"
+        android:id="@+id/tvMain"
+        style="@style/BigText"
         android:text="@string/tv_quiz"
         android:textColor="@color/colorBlack"
         android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
         android:focusable="true" />
 
     <TextView
-        android:id="@+id/tvQuAmount"
+        android:id="@+id/tvMainQuAmount"
         android:text="@string/tv_questions_amount"
         android:textColor="@color/colorGrey"
         android:textSize="12sp"
@@ -43,14 +43,14 @@
         app:layout_constraintTop_toBottomOf="@id/imgQuiz" />
 
     <TextView
-        android:id="@+id/tvAmount"
+        android:id="@+id/tvMainAmount"
         android:text="10"
         android:textSize="15sp"
         android:textColor="@color/colorBlack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/marginTop_37"
-        app:layout_constraintStart_toEndOf="@id/tvQuAmount"
+        app:layout_constraintStart_toEndOf="@id/tvMainQuAmount"
         app:layout_constraintTop_toBottomOf="@id/imgQuiz" />
 
     <SeekBar
@@ -64,7 +64,7 @@
         android:layout_marginTop="@dimen/marginTop_8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvAmount" />
+        app:layout_constraintTop_toBottomOf="@id/tvMainAmount" />
 
     <TextView
         android:id="@+id/tvCategory"
