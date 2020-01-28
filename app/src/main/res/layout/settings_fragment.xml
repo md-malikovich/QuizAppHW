@@ -30,6 +30,12 @@
         app:layout_constraintTop_toBottomOf="@id/tvSettings"
         app:layout_constraintStart_toStartOf="parent"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorGrey"
+        />
+
     <ImageView
         android:id="@+id/imgSettings1"
         android:src="@drawable/ic_chevron_right"
@@ -39,8 +45,6 @@
         android:layout_marginStart="220dp"
         app:layout_constraintStart_toEndOf="@id/tvSettings_share"
         app:layout_constraintTop_toBottomOf="@id/tvSettings"/>
-
-
 
     <TextView
         android:id="@+id/tvSettings_rate"
