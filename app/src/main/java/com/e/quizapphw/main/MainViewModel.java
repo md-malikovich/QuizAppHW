@@ -9,7 +9,6 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<String> message = new MutableLiveData<>();
 
     public MainViewModel() {
-        Log.d("ololo", "View model created");
         message.setValue("First");
     }
 }

@@ -43,6 +43,18 @@ public class QuizApiClient implements IQuizApiClient{
             }
         });
 
+//        call.enqueue((new CoreCallback<QuizQuestionsResponse>() {
+//            @Override
+//            public void onSuccess(QuizQuestionsResponse result) {
+//                //callback.onSuccess();
+//            }
+//
+//            @Override
+//            public void onFailure(Exception e) {
+//                callback.onFailure(e);
+//            }
+//        }));
+
         /*call.enqueue(new Callback<QuizQuestionsResponse>() {
             @Override
             public void onResponse(Call<QuizQuestionsResponse> call, Response<QuizQuestionsResponse> response) {

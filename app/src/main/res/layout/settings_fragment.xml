@@ -21,6 +21,7 @@
     <TextView
         android:id="@+id/tvSettings_share"
         android:text="@string/tv_share_this_app"
+        android:fontFamily="@font/sf_pro_display_regular"
         android:textColor="@color/colorBlack"
         android:textSize="18sp"
         android:layout_width="wrap_content"
@@ -49,6 +50,7 @@
     <TextView
         android:id="@+id/tvSettings_rate"
         android:text="@string/tv_rate_us"
+        android:fontFamily="@font/sf_pro_display_regular"
         android:textColor="@color/colorBlack"
         android:textSize="18sp"
         android:layout_width="wrap_content"
@@ -71,6 +73,7 @@
     <TextView
         android:id="@+id/tvSettings_feedback"
         android:text="@string/tv_leave_feedback"
+        android:fontFamily="@font/sf_pro_display_regular"
         android:textColor="@color/colorBlack"
         android:textSize="18sp"
         android:layout_width="wrap_content"
@@ -93,6 +96,7 @@
     <TextView
         android:id="@+id/tvSettings_clear"
         android:text="@string/tv_clear_history"
+        android:fontFamily="@font/sf_pro_display_regular"
         android:textColor="@color/colorBlack"
         android:textSize="18sp"
         android:layout_width="wrap_content"

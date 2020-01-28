@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 
 import com.e.quizapphw.R;
 import com.e.quizapphw.core.CoreFragment;
+import com.e.quizapphw.model.EDifficulty;
 import com.e.quizapphw.quiz.QuizActivity;
 import com.e.quizapphw.result.ResultActivity;
 
@@ -32,24 +34,23 @@ public class MainFragment extends CoreFragment {
     private ImageView skip;
     Spinner spinnerCategory, spinnerDifficulty;
     SeekBar seekBar;
-    TextView tvAmount;
+    TextView tvAmount, tvMainQuAmount;
     Button btnStart;
 
     public static MainFragment newInstance() {
         return new MainFragment();
     }
 
-//    private void initViews() {
-//        spinnerCategory = (Spinner) getActivity().findViewById(R.id.spinnerCategory);
-//        spinnerDifficulty = (Spinner) getActivity().findViewById(R.id.spinnerDifficulty);
-//        ArrayList<String> category = new ArrayList<>();
-//        category.add("1");
-//        ArrayList<String> difficulty = new ArrayList<>();
-//        ArrayAdapter adapter1 = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, category);
-//        ArrayAdapter adapter2 = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, difficulty);
-//        spinnerCategory.setAdapter(adapter1);
-//        spinnerDifficulty.setAdapter(adapter2);
-//    }
+    private void initViews() {
+        spinnerCategory = getActivity().findViewById(R.id.spinnerCategory);
+        spinnerDifficulty = getActivity().findViewById(R.id.spinnerDifficulty);
+        btnStart = getActivity().findViewById(R.id.btnStart);
+        skip = getActivity().findViewById(R.id.imgQuiz);
+        tvAmount = getActivity().findViewById(R.id.tvMainAmount);
+        seekBar = getActivity().findViewById(R.id.seekBar);
+        tvMainQuAmount = getActivity().findViewById(R.id.tvMainQuAmount);
+
+    }
 
     @Override
     protected int getLayoutId() {
@@ -64,17 +65,17 @@ public class MainFragment extends CoreFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        initViews();
         mViewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity()))
                 .get(MainViewModel.class);
 
         mViewModel.message.observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                Log.d("ololo", s);
+                //Log.d("ololo", s);
             }
         });
 
-        btnStart = (Button) getActivity().findViewById(R.id.btnStart);
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,8 +84,6 @@ public class MainFragment extends CoreFragment {
             }
         });
 
-
-        skip = (ImageView) getActivity().findViewById(R.id.imgQuiz);
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,8 +92,6 @@ public class MainFragment extends CoreFragment {
             }
         });
 
-        tvAmount = (TextView) getActivity().findViewById(R.id.tvMainAmount);
-        seekBar =  (SeekBar) getActivity().findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -112,5 +109,18 @@ public class MainFragment extends CoreFragment {
             }
         });
 
+        spinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //tvMainQuAmount.setText(ratesValues.get(position).toString().trim());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                //
+            }
+        });
     }
+
+
 }

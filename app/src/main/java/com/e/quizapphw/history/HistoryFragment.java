@@ -29,7 +29,7 @@ public class HistoryFragment extends CoreFragment {
         mViewModel.history.observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                Log.d("ololo", s);
+                //Log.d("ololo", s);
             }
         });
     }

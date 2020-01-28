@@ -31,7 +31,7 @@
     </style>
 
     <style name="RegularText">
-        <item name="android:fontFamily">@font/sf_pro_thin</item>
+        <item name="android:fontFamily">@font/sf_pro_display_regular</item>
     </style>
 
     <style name="BoldText">

@@ -33,6 +33,7 @@
     <TextView
         android:id="@+id/tvMainQuAmount"
         android:text="@string/tv_questions_amount"
+        android:fontFamily="@font/sf_pro_display_regular"
         android:textColor="@color/colorGrey"
         android:textSize="12sp"
         android:layout_width="wrap_content"
@@ -45,6 +46,7 @@
     <TextView
         android:id="@+id/tvMainAmount"
         android:text="10"
+        android:fontFamily="@font/sf_pro_display_regular"
         android:textSize="15sp"
         android:textColor="@color/colorBlack"
         android:layout_width="wrap_content"
@@ -57,8 +59,8 @@
         android:id="@+id/seekBar"
         android:layout_width="@dimen/layout_width_290"
         android:layout_height="@dimen/layout_height_30"
-        android:progressBackgroundTint="@color/colorRose"
-        android:progressTint="@color/colorBlue"
+        android:progressBackgroundTint="@color/colorProgressBar2"
+        android:progressTint="@color/colorSeekBar"
         android:progress="10"
         android:max="20"
         android:layout_marginTop="@dimen/marginTop_8"
@@ -69,6 +71,7 @@
     <TextView
         android:id="@+id/tvCategory"
         android:text="@string/tv_category"
+        android:fontFamily="@font/sf_pro_display_regular"
         android:textColor="@color/colorGrey"
         android:textSize="12sp"
         android:layout_width="wrap_content"
@@ -91,6 +94,7 @@
     <TextView
         android:id="@+id/tvDifficulty"
         android:text="@string/tv_main_difficulty"
+        android:fontFamily="@font/sf_pro_display_regular"
         android:textColor="@color/colorGrey"
         android:textSize="12sp"
         android:layout_width="wrap_content"
