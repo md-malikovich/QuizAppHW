@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.e.quizapphw.App;
@@ -16,6 +15,7 @@ import com.e.quizapphw.R;
 import com.e.quizapphw.data.remote.IQuizApiClient;
 import com.e.quizapphw.history.HistoryFragment;
 import com.e.quizapphw.model.Question;
+import com.e.quizapphw.model.TriviaCategory;
 import com.e.quizapphw.settings.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -79,13 +79,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(List<Question> questions) {
                 for (Question question : questions) {
-                    Log.d("ololo", question.getQuestion() + " " + question.getDifficulty());
+                    //Log.d("ololo", question.getQuestion() + " " + question.getDifficulty());
                 }
             }
 
             @Override
             public void onFailure(Exception e) {
-                Log.e("ololo", e.getMessage(), e);
+                //Log.e("ololo", e.getMessage(), e);
+            }
+        });
+
+        App.quizApiClient.getTriviaCategories(new IQuizApiClient.TriviaCategoriesCallback() {
+            @Override
+            public void onSuccess(List<TriviaCategory> triviaCategories) {
+                //TODO:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                //TODO:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             }
         });
     }

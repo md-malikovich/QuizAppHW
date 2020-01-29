@@ -3,7 +3,7 @@ package com.e.quizapphw.model;
 import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
-public class Question { // вопрос - моделька
+public class Question {
 
     private String category;
     private String type;

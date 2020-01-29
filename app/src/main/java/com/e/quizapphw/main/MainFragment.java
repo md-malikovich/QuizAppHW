@@ -21,12 +21,17 @@ import android.widget.TextView;
 
 import com.e.quizapphw.R;
 import com.e.quizapphw.core.CoreFragment;
+import com.e.quizapphw.data.remote.QuizApiClient;
 import com.e.quizapphw.model.EDifficulty;
 import com.e.quizapphw.quiz.QuizActivity;
 import com.e.quizapphw.result.ResultActivity;
 
 import java.util.ArrayList;
 import java.util.Objects;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.GET;
 
 public class MainFragment extends CoreFragment {
 
@@ -36,6 +41,9 @@ public class MainFragment extends CoreFragment {
     SeekBar seekBar;
     TextView tvAmount, tvMainQuAmount;
     Button btnStart;
+
+    private ArrayList<String> categories;
+    QuizApiClient quizApiClient;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -50,6 +58,15 @@ public class MainFragment extends CoreFragment {
         seekBar = getActivity().findViewById(R.id.seekBar);
         tvMainQuAmount = getActivity().findViewById(R.id.tvMainQuAmount);
 
+        ArrayList<String> category = new ArrayList<>();
+        ArrayList<String> difficulty = new ArrayList<>();
+        category.add("1");
+        difficulty.add("Easy");
+
+        ArrayAdapter adapter1 = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, category);
+        ArrayAdapter adapter2 = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, difficulty);
+        spinnerCategory.setAdapter(adapter1);
+        spinnerDifficulty.setAdapter(adapter2);
     }
 
     @Override
@@ -120,7 +137,8 @@ public class MainFragment extends CoreFragment {
                 //
             }
         });
-    }
 
+
+    }
 
 }
