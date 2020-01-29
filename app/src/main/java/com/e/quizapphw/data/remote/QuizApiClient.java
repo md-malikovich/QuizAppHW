@@ -18,7 +18,7 @@ import retrofit2.http.Query;
 
 public class QuizApiClient implements IQuizApiClient{
 
-    private ArrayList<String> categories;
+    //private ArrayList<String> categories;
 
     private Retrofit retrofit =  new Retrofit.Builder()
                 .baseUrl("https://opentdb.com/")
@@ -26,7 +26,7 @@ public class QuizApiClient implements IQuizApiClient{
                 .build();
 
     private QuizApi client = retrofit.create(QuizApi.class);
-    private QuizApiTriviaCategories client2 = retrofit.create(QuizApiTriviaCategories.class);
+    //private QuizApiTriviaCategories client2 = retrofit.create(QuizApiTriviaCategories.class);
 
     @Override
     public void getQuestions(final QuestionsCallback callback) {
@@ -50,23 +50,25 @@ public class QuizApiClient implements IQuizApiClient{
         });
     }
 
-    @Override
-        public void getTriviaCategories(final TriviaCategoriesCallback triviaCategoriesCallback) {
-            Call<TriviaCategoriesCallback> call2 = client2.getTriviaCategories("General Knowledge");
-            Log.d("ololo", "URL - " + call2.request().url());
-            categories = new ArrayList<>();
+//    @Override
+//        public void getTriviaCategories(final TriviaCategoriesCallback triviaCategoriesCallback) {
+//            Call<QuizCategoriesResponse> call2 = client2
 
-            call2.enqueue(new CoreCallback<QuizCategoriesResponse>() {
-                @Override
-                public void onSuccess(QuizCategoriesResponse result) {
-                    triviaCategoriesCallback.onSuccess(result.getTriviaCategories()); //TODO: !!!!!!!!!!!!!!!!!!!
-                }
+//            Call<TriviaCategoriesCallback> call2 = client2.getTriviaCategories("General Knowledge");
+//            Log.d("ololo", "URL - " + call2.request().url());
+//            categories = new ArrayList<>();
 
-                @Override
-                public void onFailure(Exception e) {
-                    //
-                }
-            });
+//            call2.enqueue(new CoreCallback<QuizCategoriesResponse>() {
+//                @Override
+//                public void onSuccess(QuizCategoriesResponse result) {
+//                    triviaCategoriesCallback.onSuccess(result.getTriviaCategories());
+//                }
+//
+//                @Override
+//                public void onFailure(Exception e) {
+//                    //
+//                }
+//            });
 
 //        call2.enqueue(new Callback<QuizCategoriesResponse>() {
 //            @Override
@@ -104,7 +106,7 @@ public class QuizApiClient implements IQuizApiClient{
 //                callback.onFailure(new Exception(t));
 //            }
 //        });
-    }
+//    }
 
     private interface QuizApi {
         @GET("api.php")
@@ -114,9 +116,9 @@ public class QuizApiClient implements IQuizApiClient{
                 @Query("difficulty") String difficulty);
     }
 
-    private interface QuizApiTriviaCategories {
-        @GET("api_category.php")
-        Call<TriviaCategoriesCallback> getTriviaCategories(
-                @Query("category") String category);
-    }
+//    private interface QuizApiTriviaCategories {
+//        @GET("api_category.php")
+//        Call<TriviaCategoriesCallback> getTriviaCategories(
+//                @Query("category") String category);
+//    }
 }
