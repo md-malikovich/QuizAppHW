@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -27,10 +26,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (mViewPager.getCurrentItem() == 0) {
-            super.onBackPressed();
-        } else {
-            mViewPager.setCurrentItem(0);
+        switch (mViewPager.getCurrentItem()) {
+            case 0:
+                super.onBackPressed();
+                break;
+            case 1:
+                mViewPager.setCurrentItem(0);
+                break;
+            case 2:
+                mViewPager.setCurrentItem(1);
+                break;
         }
     }
 
@@ -47,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         setBottomNavigationView();
     }
 
-    private  void setBottomNavigationView() {
+    private void setBottomNavigationView() {
 
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -77,19 +82,19 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        App.quizApiClient.getQuestions(new IQuizApiClient.QuestionsCallback() {
-            @Override
-            public void onSuccess(List<Question> questions) {
-                for (Question question : questions) {
-                    //Log.d("ololo", question.getQuestion() + " " + question.getDifficulty());
-                }
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                //Log.e("ololo", e.getMessage(), e);
-            }
-        });
+//        App.quizApiClient.getQuestions(amount, category, difficulty, new IQuizApiClient.QuestionsCallback() {
+//            @Override
+//            public void onSuccess(List<Question> questions) {
+//                for (Question question : questions) {
+//                    //Log.d("ololo", question.getQuestion() + " " + question.getDifficulty());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Exception e) {
+//                //Log.e("ololo", e.getMessage(), e);
+//            }
+//        });
 
 //        App.quizApiClient.getTriviaCategories(new IQuizApiClient.TriviaCategoriesCallback() {
 //            @Override

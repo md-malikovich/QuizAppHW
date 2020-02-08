@@ -37,15 +37,6 @@
 
     </LinearLayout>
 
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/quiz_recycler"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-
-
     <ProgressBar
         android:id="@+id/progressBarQuiz"
         android:layout_width="175dp"
@@ -74,71 +65,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/progressBarQuiz"/>
 
-    <TextView
-        android:id="@+id/tvQuizQuestion"
-        android:layout_width="213dp"
-        android:layout_height="70dp"
-        android:text="What is the largest city and commercial capital of Sri Lanka?"
-        android:textSize="20dp"
-        android:fontFamily="@font/sf_pro_display_regular"
-        android:gravity="center"
-        android:textColor="@color/colorBlack"
-        android:layout_marginTop="49dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvQuizProgress"/>
-
-    <Button
-        android:id="@+id/btnAnswer1"
-        android:layout_width="280dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="52dp"
-        android:textColor="@color/colorWhite"
-        android:text="Colombo"
-        android:visibility="visible"
-        android:background="@drawable/rounded_btn_blue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvQuizQuestion"/>
-
-    <Button
-        android:id="@+id/btnAnswer2"
-        android:layout_width="280dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="6dp"
-        android:textColor="@color/colorBlue"
-        android:text="Moratuwa"
-        android:visibility="visible"
-        android:background="@drawable/rounded_btn_white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAnswer1"/>
-
-    <Button
-        android:id="@+id/btnAnswer3"
-        android:layout_width="280dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="6dp"
-        android:textColor="@color/colorBlue"
-        android:text="Negombo"
-        android:visibility="visible"
-        android:background="@drawable/rounded_btn_white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAnswer2"/>
-
-    <Button
-        android:id="@+id/btnAnswer4"
-        android:layout_width="280dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="6dp"
-        android:textColor="@color/colorBlue"
-        android:text="Kandy"
-        android:visibility="visible"
-        android:background="@drawable/rounded_btn_white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAnswer3"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/quiz_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuizProgress"
+        tools:listitem="@layout/item_quiz" />
 
     <Button
         android:id="@+id/btnSkip"
@@ -151,7 +85,7 @@
         android:background="@drawable/rounded_btn_pink"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAnswer4"/>
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="77dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

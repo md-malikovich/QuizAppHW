@@ -1,5 +1,7 @@
 package com.e.quizapphw.data;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import com.e.quizapphw.data.history.IHistoryStorage;
 import com.e.quizapphw.data.remote.IQuizApiClient;
@@ -30,13 +32,13 @@ public class QuizRepository implements IHistoryStorage, IQuizApiClient {
 
         Collections.shuffle(answers);
         question.setAnswers(answers);
-
+        Log.e("ololo", "shuffleAns: " + answers);
         return question;
     }
 
     @Override
-    public void getQuestions(final IQuizApiClient.QuestionsCallback callback) {
-        quizApiClient.getQuestions(new IQuizApiClient.QuestionsCallback() {
+    public void getQuestions(int amount, Integer category, String difficulty, final QuestionsCallback callback) {
+        quizApiClient.getQuestions(amount, category, difficulty, new QuestionsCallback() {
             @Override
             public void onSuccess(List<Question> result) {
                 for (int i = 0; i < result.size(); i++) {
@@ -75,6 +77,21 @@ public class QuizRepository implements IHistoryStorage, IQuizApiClient {
     @Override
     public void deleteAll() {
         //
+    }
+
+    @Override
+    public void getTriviaCategories(TriviaCategoriesCallback triviaCategoriesCallback) {
+
+    }
+
+    @Override
+    public void getCountGlobal(CountGlobalCallback callback) {
+
+    }
+
+    @Override
+    public void getQuestionCount(Integer category, QuestionCountCallback questionCount) {
+
     }
 }
 

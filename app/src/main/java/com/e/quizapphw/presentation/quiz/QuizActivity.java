@@ -10,14 +10,19 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+
 import com.e.quizapphw.R;
+import com.e.quizapphw.model.Question;
 import com.e.quizapphw.presentation.quiz.recycler.QuizAdapter;
 import com.e.quizapphw.presentation.quiz.recycler.QuizViewHolder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Listener {
 
@@ -35,10 +40,18 @@ public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Li
     }
     //endregion
 
-    ProgressBar progressBarQuiz;
-    private QuizViewModel viewModel;
     private RecyclerView recyclerView;
+    private ProgressBar progressBarQuiz;
+    private QuizViewModel viewModel;
     private QuizAdapter adapter;
+
+    private List<Question> questionsList = new ArrayList<>();
+
+    private TextView tvQuizCategory, tvQuizProgress;
+    private Integer category;
+    private String difficulty;
+    private int amount;
+    private int amountQuantity;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -46,10 +59,9 @@ public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Li
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        initView();
+        viewModel = ViewModelProviders.of(this).get(QuizViewModel.class);
 
-        viewModel = ViewModelProviders.of(this)
-                .get(QuizViewModel.class);
+        initView();
 
         viewModel.questions.observe(this, questions -> {
             adapter.setQuestions(questions);
@@ -57,27 +69,31 @@ public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Li
 
         viewModel.currentQuestionPosition.observe(this, currentQuestion -> {
             String hint = currentQuestion + 1 + "/" + adapter.getItemCount();
-
             recyclerView.smoothScrollToPosition(currentQuestion);
         });
 
         viewModel.openResultEvent.observe(this, resultId -> {
-
+            //
         });
 
         viewModel.init(10, 0, "");
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void initView() {
-        getIntent().getIntExtra(EXTRA_AMOUNT, 10);
-        progressBarQuiz = findViewById(R.id.progressBarQuiz);
-
-        adapter = new QuizAdapter(this::onAnswerClick);
         recyclerView = findViewById(R.id.quiz_recycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(
+
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(
                 this,
-                RecyclerView.HORIZONTAL,
-                false));
+                LinearLayoutManager.HORIZONTAL,
+                false) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+        recyclerView.setLayoutManager(manager);
+        adapter = new QuizAdapter(this::onAnswerClick); //adapter = new QuizAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setOnTouchListener((v, event) -> true);
 
@@ -85,6 +101,9 @@ public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Li
             viewModel.onSkipClick();
             Log.d("ololo", "skip");
         });
+
+        getIntent().getIntExtra(EXTRA_AMOUNT, 10);
+        progressBarQuiz = findViewById(R.id.progressBarQuiz);
     }
 
     @Override
@@ -92,8 +111,3 @@ public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Li
         viewModel.onAnswerClick(position, selectedAnswerPosition);
     }
 }
-//    @Nullable
-//    @Override
-//    public View onCreateView(@NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
-//        return super.onCreateView(name, context, attrs);
-//    }

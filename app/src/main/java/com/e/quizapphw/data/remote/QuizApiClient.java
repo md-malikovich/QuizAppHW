@@ -3,14 +3,8 @@ package com.e.quizapphw.data.remote;
 import android.util.Log;
 
 import com.e.quizapphw.core.CoreCallback;
-import com.e.quizapphw.model.TriviaCategory;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
@@ -26,7 +20,7 @@ public class QuizApiClient implements IQuizApiClient{
     //private QuizApiTriviaCategories client2 = retrofit.create(QuizApiTriviaCategories.class);
 
     @Override
-    public void getQuestions(final QuestionsCallback callback) {
+    public void getQuestions(int amount, Integer category, String difficulty, final QuestionsCallback callback) {
         Call<QuizQuestionsResponse> call = client.getQuestions(
                 20,
                 null,
@@ -45,6 +39,21 @@ public class QuizApiClient implements IQuizApiClient{
                 callback.onFailure(e);
             }
         });
+    }
+
+    @Override
+    public void getTriviaCategories(TriviaCategoriesCallback triviaCategoriesCallback) {
+
+    }
+
+    @Override
+    public void getCountGlobal(CountGlobalCallback callback) {
+
+    }
+
+    @Override
+    public void getQuestionCount(Integer category, QuestionCountCallback questionCount) {
+
     }
 
     private interface TriviaApi {

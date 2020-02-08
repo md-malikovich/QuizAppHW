@@ -1,5 +1,7 @@
 package com.e.quizapphw.presentation.quiz;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import com.e.quizapphw.App;
@@ -23,12 +25,14 @@ public class QuizViewModel extends ViewModel {
 
 
     void init(int amount, Integer category, String difficulty) {
-        quizApiClient.getQuestions(new IQuizApiClient.QuestionsCallback() {
+        quizApiClient.getQuestions(amount, category, difficulty, new IQuizApiClient.QuestionsCallback() {
             @Override
             public void onSuccess(List<Question> result) {
+                questions.postValue(result);
                 mQuestions = result;
                 questions.setValue(mQuestions);
-                currentQuestionPosition.setValue(0);
+                Log.e("ololo", "onSuccess: " + result.get(0).getAnswers());
+                Log.e("ololo", result.get(0).getAnswers() + "");
             }
 
             @Override
