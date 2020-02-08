@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".settings.SettingsFragment">
+    tools:context=".presentation.settings.SettingsFragment">
 
     <TextView
         android:id="@+id/tvSettings"
@@ -18,38 +18,50 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorGrey"
+        app:layout_constraintTop_toTopOf="@+id/tvSettings_share"/>
+
     <TextView
         android:id="@+id/tvSettings_share"
+        android:background="?android:selectableItemBackground"
+        android:clickable="true"
         android:text="@string/tv_share_this_app"
         android:fontFamily="@font/sf_pro_display_regular"
         android:textColor="@color/colorBlack"
         android:textSize="18sp"
-        android:layout_width="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginTop="126dp"
         android:layout_marginStart="@dimen/marginStart_24"
         app:layout_constraintTop_toBottomOf="@id/tvSettings"
         app:layout_constraintStart_toStartOf="parent"/>
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/tvSettings_share"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSettings_share"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/ic_chevron_right"/>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@color/colorGrey"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSettings_share"
         />
 
-    <ImageView
-        android:id="@+id/imgSettings1"
-        android:src="@drawable/ic_chevron_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="126dp"
-        android:layout_marginStart="220dp"
-        app:layout_constraintStart_toEndOf="@id/tvSettings_share"
-        app:layout_constraintTop_toBottomOf="@id/tvSettings"/>
 
     <TextView
         android:id="@+id/tvSettings_rate"
         android:text="@string/tv_rate_us"
+        android:background="?android:selectableItemBackground"
         android:fontFamily="@font/sf_pro_display_regular"
         android:textColor="@color/colorBlack"
         android:textSize="18sp"
@@ -74,6 +86,7 @@
         android:id="@+id/tvSettings_feedback"
         android:text="@string/tv_leave_feedback"
         android:fontFamily="@font/sf_pro_display_regular"
+        android:background="?android:selectableItemBackground"
         android:textColor="@color/colorBlack"
         android:textSize="18sp"
         android:layout_width="wrap_content"
@@ -96,6 +109,7 @@
     <TextView
         android:id="@+id/tvSettings_clear"
         android:text="@string/tv_clear_history"
+        android:background="?android:selectableItemBackground"
         android:fontFamily="@font/sf_pro_display_regular"
         android:textColor="@color/colorBlack"
         android:textSize="18sp"

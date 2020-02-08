@@ -10,6 +10,7 @@
         <item name="android:windowBackground">@color/colorWhite</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:navigationBarColor">@color/colorWhite</item>
         <item name="android:statusBarColor">@color/colorWhite</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>

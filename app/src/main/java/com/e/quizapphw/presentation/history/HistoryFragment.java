@@ -1,10 +1,10 @@
-package com.e.quizapphw.history;
+package com.e.quizapphw.presentation.history;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
-import android.util.Log;
+
 import com.e.quizapphw.R;
 import com.e.quizapphw.core.CoreFragment;
 

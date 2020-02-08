@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".main.MainFragment">
+    tools:context=".presentation.main.MainFragment">
 
     <TextView
         android:id="@+id/tvMain"
@@ -62,7 +62,8 @@
         android:progressBackgroundTint="@color/colorProgressBar2"
         android:progressTint="@color/colorSeekBar"
         android:progress="10"
-        android:max="20"
+        android:max="50"
+        android:min="5"
         android:layout_marginTop="@dimen/marginTop_8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +82,7 @@
         app:layout_constraintTop_toBottomOf="@id/seekBar"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <Spinner
+    <org.angmarch.views.NiceSpinner
         android:id="@+id/spinnerCategory"
         android:layout_width="@dimen/layout_width_240"
         android:layout_height="@dimen/layout_height_48"
@@ -90,12 +91,14 @@
         android:entries="@array/categories"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvCategory"
+        android:popupBackground="@color/colorWhite"
+        app:popupTextAlignment="start"
         android:layout_marginTop="@dimen/marginTop_8"
         android:layout_marginStart="@dimen/marginStart_67" />
 
     <TextView
         android:id="@+id/tvDifficulty"
-        tools:text="@string/tv_main_difficulty"
+        android:text="@string/tv_main_difficulty"
         android:fontFamily="@font/sf_pro_display_regular"
         android:textColor="@color/colorGrey"
         android:textSize="12sp"
@@ -106,7 +109,7 @@
         app:layout_constraintTop_toBottomOf="@id/spinnerCategory"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <Spinner
+    <org.angmarch.views.NiceSpinner
         android:id="@+id/spinnerDifficulty"
         android:layout_width="@dimen/layout_width_240"
         android:layout_height="@dimen/layout_height_48"
@@ -115,6 +118,7 @@
         android:entries="@array/difficulties"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvDifficulty"
+        app:popupTextAlignment="start"
         android:layout_marginTop="@dimen/marginTop_8"
         android:layout_marginStart="@dimen/marginStart_67" />
 

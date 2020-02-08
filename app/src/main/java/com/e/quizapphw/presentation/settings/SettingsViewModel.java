@@ -1,4 +1,4 @@
-package com.e.quizapphw.settings;
+package com.e.quizapphw.presentation.settings;
 
 import androidx.lifecycle.ViewModel;
 

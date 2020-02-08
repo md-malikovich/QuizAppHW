@@ -11,7 +11,7 @@ public class QuizCategoriesResponse {
     @Expose
     private List<TriviaCategory> triviaCategories;
 
-    public List<TriviaCategory> getTriviaCategories() {
+        public List<TriviaCategory> getTriviaCategories() {
         return triviaCategories;
     }
 

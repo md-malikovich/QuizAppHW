@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_history"
-        android:name="com.e.quizapphw.history.HistoryFragment"
+        android:name="com.e.quizapphw.presentation.history.HistoryFragment"
         android:label="History"
         tools:layout="@layout/history_fragment" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="com.e.quizapphw.settings.SettingsFragment"
+        android:name="com.e.quizapphw.presentation.settings.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/settings_fragment" />
 </navigation>

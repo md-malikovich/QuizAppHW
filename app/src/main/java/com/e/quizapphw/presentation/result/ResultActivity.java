@@ -1,4 +1,4 @@
-package com.e.quizapphw.result;
+package com.e.quizapphw.presentation.result;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,8 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.e.quizapphw.R;
-import com.e.quizapphw.main.MainActivity;
-import com.e.quizapphw.main.MainFragment;
+import com.e.quizapphw.presentation.main.MainActivity;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -21,12 +20,9 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         finish = findViewById(R.id.btnFinish);
-        finish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ResultActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
+        finish.setOnClickListener(v -> {
+            Intent intent = new Intent(ResultActivity.this, MainActivity.class);
+            startActivity(intent);
         });
     }
 }

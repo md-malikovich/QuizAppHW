@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".quiz.QuizActivity">
+    tools:context=".presentation.quiz.QuizActivity">
 
     <LinearLayout
         android:id="@+id/linearQuiz"
@@ -36,6 +36,15 @@
             android:layout_marginTop="@dimen/marginTop_25" />
 
     </LinearLayout>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/quiz_recycler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
 
     <ProgressBar
         android:id="@+id/progressBarQuiz"

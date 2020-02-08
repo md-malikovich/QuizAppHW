@@ -1,4 +1,4 @@
-package com.e.quizapphw.settings;
+package com.e.quizapphw.presentation.settings;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 import com.e.quizapphw.R;
 import com.e.quizapphw.core.CoreFragment;
-import com.e.quizapphw.main.MainViewModel;
+import com.e.quizapphw.presentation.main.MainViewModel;
 
 public class SettingsFragment extends CoreFragment {
 

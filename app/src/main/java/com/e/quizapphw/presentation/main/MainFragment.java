@@ -1,11 +1,11 @@
-package com.e.quizapphw.main;
+package com.e.quizapphw.presentation.main;
 
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -15,38 +15,39 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import com.e.quizapphw.R;
 import com.e.quizapphw.core.CoreFragment;
-import com.e.quizapphw.data.remote.QuizApiClient;
-import com.e.quizapphw.quiz.QuizActivity;
-import com.e.quizapphw.result.ResultActivity;
-import java.util.ArrayList;
-import java.util.Objects;
+import com.e.quizapphw.presentation.quiz.QuizActivity;
+import com.e.quizapphw.presentation.result.ResultActivity;
+
+import org.angmarch.views.NiceSpinner;
 
 public class MainFragment extends CoreFragment {
 
+    SeekBar seekBar;
+    private NiceSpinner spinnerCategory;
+    private NiceSpinner spinnerDifficulty;
     private MainViewModel mViewModel;
     private ImageView skip;
-    Spinner spinnerCategory, spinnerDifficulty;
-    SeekBar seekBar;
     TextView tvAmount, tvMainQuAmount;
     Button btnStart;
+    //private View mStart;
 
     public static MainFragment newInstance() {
         return new MainFragment();
     }
 
+    @Override
+    protected int getLayoutId() {
+        return R.layout.main_fragment;
+    }
+
     private void initViews() {
+        seekBar = getActivity().findViewById(R.id.seekBar);
         spinnerCategory = getActivity().findViewById(R.id.spinnerCategory);
         spinnerDifficulty = getActivity().findViewById(R.id.spinnerDifficulty);
         btnStart = getActivity().findViewById(R.id.btnStart);
         skip = getActivity().findViewById(R.id.imgQuiz);
         tvAmount = getActivity().findViewById(R.id.tvMainAmount);
-        seekBar = getActivity().findViewById(R.id.seekBar);
         tvMainQuAmount = getActivity().findViewById(R.id.tvMainQuAmount);
-    }
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.main_fragment;
     }
 
     @Override
@@ -58,30 +59,30 @@ public class MainFragment extends CoreFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initViews();
-        mViewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity()))
-                .get(MainViewModel.class);
+//        mViewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity()))
+//                .get(MainViewModel.class);
+//
+//        mViewModel.message.observe(this, new Observer<String>() {
+//            @Override
+//            public void onChanged(String s) {
+//                //Log.d("ololo", s);
+//            }
+//        });
 
-        mViewModel.message.observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                //Log.d("ololo", s);
-            }
+        btnStart.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), QuizActivity.class);
+            startActivity(intent);
+            QuizActivity.start(getContext(), 10, 6, "easy");
+
+            Log.d("ololo", "Start properties - amount:" + seekBar.getProgress()
+                    + " category: " + spinnerCategory.getSelectedIndex()
+                    + " difficulty: " + spinnerDifficulty.getSelectedIndex()
+            );
         });
 
-        btnStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), QuizActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        skip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ResultActivity.class);
-                startActivity(intent);
-            }
+        skip.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), ResultActivity.class);
+            startActivity(intent);
         });
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {

@@ -1,4 +1,4 @@
-package com.e.quizapphw.history;
+package com.e.quizapphw.presentation.history;
 
 import android.util.Log;
 import androidx.lifecycle.MutableLiveData;

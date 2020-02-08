@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".history.HistoryFragment">
+    tools:context=".presentation.history.HistoryFragment">
 
     <TextView
         android:id="@+id/tvHistory"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/cardView1"
         android:layout_width="@dimen/layout_width_338"
         android:layout_height="@dimen/layout_height_90"
@@ -101,9 +101,9 @@
             android:layout_marginTop="@dimen/marginTop_70"
             android:layout_marginStart="@dimen/marginStart_230" />
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="@dimen/layout_width_338"
         android:layout_height="@dimen/layout_height_90"
@@ -186,9 +186,9 @@
             android:layout_marginTop="@dimen/marginTop_70"
             android:layout_marginStart="@dimen/marginStart_230" />
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
         android:layout_width="@dimen/layout_width_338"
         android:layout_height="@dimen/layout_height_90"
@@ -271,6 +271,6 @@
             android:layout_marginTop="@dimen/marginTop_70"
             android:layout_marginStart="@dimen/marginStart_230" />
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

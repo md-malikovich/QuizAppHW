@@ -1,4 +1,4 @@
-package com.e.quizapphw.main;
+package com.e.quizapphw.presentation.main;
 
 import android.util.Log;
 import androidx.lifecycle.MutableLiveData;

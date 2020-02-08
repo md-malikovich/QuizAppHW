@@ -11,7 +11,8 @@ public interface IQuizApiClient {
 
     //void getTriviaCategories(TriviaCategoriesCallback triviaCategoriesCallback);
 
-    public interface QuestionsCallback { // братишка
+    interface QuestionsCallback { // братишка
+//    interface QuestionsCallback extends IBaseCallback<List<Question>> { // братишка - generic
         void onSuccess (List<Question> questions);
         void onFailure(Exception e);
     }
@@ -21,3 +22,4 @@ public interface IQuizApiClient {
 //        void onFailure(Exception e);
 //    }
 }
+

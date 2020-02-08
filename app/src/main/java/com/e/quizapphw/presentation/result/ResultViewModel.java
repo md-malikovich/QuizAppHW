@@ -1,4 +1,4 @@
-package com.e.quizapphw.result;
+package com.e.quizapphw.presentation.result;
 
 import androidx.lifecycle.ViewModel;
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".result.ResultActivity">
+    tools:context=".presentation.result.ResultActivity">
 
     <TextView
         android:id="@+id/tvResult"
@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/ic_img_done" />
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="342dp"
         android:layout_height="174dp"
@@ -122,7 +122,7 @@
             android:layout_marginTop="@dimen/marginTop_100"
             android:layout_marginStart="270dp" />
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/btnFinish"

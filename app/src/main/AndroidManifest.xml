@@ -17,17 +17,17 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name=".quiz.QuizActivity"
+            android:name=".presentation.quiz.QuizActivity"
             android:theme="@style/NoActionBar">
         </activity>
 
         <activity
-            android:name=".result.ResultActivity"
+            android:name=".presentation.result.ResultActivity"
             android:theme="@style/NoActionBar">
         </activity>
 
         <activity
-            android:name=".main.MainActivity"
+            android:name=".presentation.main.MainActivity"
             android:launchMode="singleTask"
             android:theme="@style/NoActionBar">
             <intent-filter>
