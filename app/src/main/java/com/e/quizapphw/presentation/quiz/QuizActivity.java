@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -19,11 +20,6 @@ import com.e.quizapphw.presentation.quiz.recycler.QuizAdapter;
 import com.e.quizapphw.presentation.quiz.recycler.QuizViewHolder;
 
 public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Listener {
-
-    ProgressBar progressBarQuiz;
-    private QuizViewModel viewModel;
-    private RecyclerView recyclerView;
-    private QuizAdapter adapter;
 
     //region Static
     private static String EXTRA_AMOUNT = "amount";
@@ -39,24 +35,18 @@ public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Li
     }
     //endregion
 
+    ProgressBar progressBarQuiz;
+    private QuizViewModel viewModel;
+    private RecyclerView recyclerView;
+    private QuizAdapter adapter;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        adapter = new QuizAdapter(this::onAnswerClick);
-        recyclerView = findViewById(R.id.quiz_recycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(
-                this,
-                RecyclerView.HORIZONTAL,
-                false));
-        recyclerView.setAdapter(adapter);
-        recyclerView.setOnTouchListener((v, event) -> true);
-
-//        findViewById(R.id.btnStart).setOnClickListener(v -> {
-//            viewModel.onSkipClick();
-//        });
+        initView();
 
         viewModel = ViewModelProviders.of(this)
                 .get(QuizViewModel.class);
@@ -76,9 +66,25 @@ public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Li
         });
 
         viewModel.init(10, 0, "");
+    }
 
+    private void initView() {
         getIntent().getIntExtra(EXTRA_AMOUNT, 10);
         progressBarQuiz = findViewById(R.id.progressBarQuiz);
+
+        adapter = new QuizAdapter(this::onAnswerClick);
+        recyclerView = findViewById(R.id.quiz_recycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(
+                this,
+                RecyclerView.HORIZONTAL,
+                false));
+        recyclerView.setAdapter(adapter);
+        recyclerView.setOnTouchListener((v, event) -> true);
+
+        findViewById(R.id.btnSkip).setOnClickListener(v -> {
+            viewModel.onSkipClick();
+            Log.d("ololo", "skip");
+        });
     }
 
     @Override

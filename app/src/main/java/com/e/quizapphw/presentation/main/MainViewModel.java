@@ -4,11 +4,18 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.e.quizapphw.core.SingleLiveEvent;
+
 public class MainViewModel extends ViewModel {
 
-    public MutableLiveData<String> message = new MutableLiveData<>();
+    SingleLiveEvent<Void> finishEvent = new SingleLiveEvent<>();
+    SingleLiveEvent<String> messageEvent = new SingleLiveEvent<>();
 
-    public MainViewModel() {
-        message.setValue("First");
+    void callFinish() {
+        finishEvent.call();
+    }
+
+    void onShowMessageClick() {
+        messageEvent.setValue("Hello!");
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.util.Log;
 import android.view.View;
@@ -17,15 +18,20 @@ import com.e.quizapphw.R;
 import com.e.quizapphw.core.CoreFragment;
 import com.e.quizapphw.presentation.quiz.QuizActivity;
 import com.e.quizapphw.presentation.result.ResultActivity;
+import com.e.quizapphw.utils.SimpleSeekBarChangeListener;
 
 import org.angmarch.views.NiceSpinner;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class MainFragment extends CoreFragment {
 
     SeekBar seekBar;
     private NiceSpinner spinnerCategory;
     private NiceSpinner spinnerDifficulty;
-    private MainViewModel mViewModel;
+    private MainViewModel viewModel;
     private ImageView skip;
     TextView tvAmount, tvMainQuAmount;
     Button btnStart;
@@ -40,7 +46,10 @@ public class MainFragment extends CoreFragment {
         return R.layout.main_fragment;
     }
 
-    private void initViews() {
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         seekBar = getActivity().findViewById(R.id.seekBar);
         spinnerCategory = getActivity().findViewById(R.id.spinnerCategory);
         spinnerDifficulty = getActivity().findViewById(R.id.spinnerDifficulty);
@@ -48,30 +57,19 @@ public class MainFragment extends CoreFragment {
         skip = getActivity().findViewById(R.id.imgQuiz);
         tvAmount = getActivity().findViewById(R.id.tvMainAmount);
         tvMainQuAmount = getActivity().findViewById(R.id.tvMainQuAmount);
-    }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
+        setSpinners(getResources().getStringArray(R.array.categories), spinnerCategory);
+        setSpinners(getResources().getStringArray(R.array.difficulties), spinnerDifficulty);
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        initViews();
-//        mViewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity()))
-//                .get(MainViewModel.class);
-//
-//        mViewModel.message.observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(String s) {
-//                //Log.d("ololo", s);
-//            }
-//        });
+        seekBar.setOnSeekBarChangeListener(new SimpleSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                tvAmount.setText(String.valueOf(progress));
+            }
+        });
 
         btnStart.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), QuizActivity.class);
-            startActivity(intent);
+
             QuizActivity.start(getContext(), 10, 6, "easy");
 
             Log.d("ololo", "Start properties - amount:" + seekBar.getProgress()
@@ -84,34 +82,39 @@ public class MainFragment extends CoreFragment {
             Intent intent = new Intent(getActivity(), ResultActivity.class);
             startActivity(intent);
         });
+    }
 
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                tvAmount.setText(String.valueOf(progress));
-            }
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                //
-            }
+        viewModel = ViewModelProviders.of(this)
+                .get(MainViewModel.class);
 
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                //
-            }
+        viewModel.finishEvent.observe(this, aVoid -> {
+            Log.d("ololo", "Finish");
         });
 
-        spinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //tvMainQuAmount.setText(ratesValues.get(position).toString().trim());
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                //
-            }
+        viewModel.messageEvent.observe(this, message -> {
+            Log.d("ololo", "Meessage " + message);
         });
+
+        viewModel.callFinish();
+        viewModel.onShowMessageClick();
+
+//        mViewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity()))
+//                .get(MainViewModel.class);
+
+//        mViewModel.message.observe(this, new Observer<String>() {
+//            @Override
+//            public void onChanged(String s) {
+//                //Log.d("ololo", s);
+//            }
+//        });
+    }
+
+    private void setSpinners(String[] array, NiceSpinner spinner) {
+        List<String> list = new LinkedList<>(Arrays.asList(array));
+        spinner.attachDataSource(list);
     }
 }
