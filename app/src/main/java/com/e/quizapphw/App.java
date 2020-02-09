@@ -16,7 +16,12 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
+        //quizApiClient = new QuizApiClient();
+        //historyStorage = new HistoryStorage();
+
         QuizRepository repository = new QuizRepository(
+                //quizApiClient,
+                //historyStorage
                 new QuizApiClient(),
                 new HistoryStorage()
         );

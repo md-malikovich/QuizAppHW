@@ -37,6 +37,7 @@ public class QuizViewModel extends ViewModel {
                 questions.postValue(result);
                 mQuestions = result;
                 questions.setValue(mQuestions);
+                //currentQuestionPosition.setValue(0);
             }
 
             @Override

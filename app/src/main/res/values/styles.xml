@@ -13,6 +13,7 @@
         <item name="android:navigationBarColor">@color/colorWhite</item>
         <item name="android:statusBarColor">@color/colorWhite</item>
         <item name="android:windowLightStatusBar">true</item>
+
     </style>
 
     <style name="BigText" parent="BoldText">
