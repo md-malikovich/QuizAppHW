@@ -34,7 +34,6 @@ public class MainFragment extends CoreFragment {
     private NiceSpinner spinnerCategory;
     private NiceSpinner spinnerDifficulty;
     private MainViewModel viewModel;
-    private ImageView skip;
     TextView tvAmount, tvMainQuAmount;
     Button btnStart;
     private String difficult;
@@ -58,7 +57,6 @@ public class MainFragment extends CoreFragment {
         spinnerCategory = getActivity().findViewById(R.id.spinnerCategory);
         spinnerDifficulty = getActivity().findViewById(R.id.spinnerDifficulty);
         btnStart = getActivity().findViewById(R.id.btnStart);
-        skip = getActivity().findViewById(R.id.imgQuiz);
         tvAmount = getActivity().findViewById(R.id.tvMainAmount);
         tvMainQuAmount = getActivity().findViewById(R.id.tvMainQuAmount);
 
@@ -81,11 +79,6 @@ public class MainFragment extends CoreFragment {
                     + " category: " + spinnerCategory.getSelectedIndex()
                     + " difficulty: " + spinnerDifficulty.getSelectedIndex()
             );
-        });
-
-        skip.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), ResultActivity.class);
-            startActivity(intent);
         });
     }
 
@@ -119,7 +112,7 @@ public class MainFragment extends CoreFragment {
         });
 
         viewModel.messageEvent.observe(this, message -> {
-            Log.d("ololo", "Meessage " + message);
+            Log.d("ololo", "Message " + message);
         });
 
         viewModel.callFinish();

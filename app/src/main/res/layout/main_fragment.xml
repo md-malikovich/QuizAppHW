@@ -23,12 +23,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/marginTop_90"
-        android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_quiz_main"
-        android:focusable="true" />
+        android:src="@drawable/ic_quiz_main" />
 
     <TextView
         android:id="@+id/tvMainQuAmount"
@@ -61,6 +59,7 @@
         android:layout_height="@dimen/layout_height_30"
         android:progressBackgroundTint="@color/colorProgressBar2"
         android:progressTint="@color/colorSeekBar"
+        android:thumbTint="@color/colorBlue"
         android:progress="10"
         android:max="50"
         android:min="5"

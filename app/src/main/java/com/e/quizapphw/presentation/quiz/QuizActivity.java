@@ -74,7 +74,8 @@ public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Li
 //            String hint = currentQuestion + 1 + "/" + adapter.getItemCount();
 //            recyclerView.smoothScrollToPosition(currentQuestion);
 //        });
-        viewModel.openResultEvent.observe(this, resultId -> {//
+        viewModel.openResultEvent.observe(this, resultId -> {
+            //
         });
         viewModel.init(amount, category, difficulty);
     }
