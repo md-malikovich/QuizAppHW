@@ -22,11 +22,11 @@ public class QuizApiClient implements IQuizApiClient{
     @Override
     public void getQuestions(int amount, Integer category, String difficulty, final QuestionsCallback callback) {
         Call<QuizQuestionsResponse> call = client.getQuestions(
-                20,
-                null,
-                "easy"
+                amount,
+                category,
+                difficulty
         );
-        Log.d("ololo", "URL - " + call.request().url());
+        Log.e("-----------", "URL - " + call.request().url());
 
         call.enqueue(new CoreCallback<QuizQuestionsResponse>() {
             @Override
@@ -60,7 +60,7 @@ public class QuizApiClient implements IQuizApiClient{
         @GET("api.php")
         Call<QuizQuestionsResponse> getQuestions(
                 @Query("amount") int amount,
-                @Query("category") String category,
+                @Query("category") Integer category,
                 @Query("difficulty") String difficulty);
     }
 

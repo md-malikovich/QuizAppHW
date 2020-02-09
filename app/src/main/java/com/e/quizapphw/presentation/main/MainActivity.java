@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import com.e.quizapphw.App;
@@ -37,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
                 mViewPager.setCurrentItem(1);
                 break;
         }
+    }
+
+    public static void start(Context context) {
+        context.startActivity(new Intent(context, MainActivity.class));
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.e.quizapphw.presentation.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+
 import com.e.quizapphw.R;
 import com.e.quizapphw.core.CoreFragment;
 import com.e.quizapphw.presentation.quiz.QuizActivity;
@@ -35,6 +37,8 @@ public class MainFragment extends CoreFragment {
     private ImageView skip;
     TextView tvAmount, tvMainQuAmount;
     Button btnStart;
+    private String difficult;
+    private Integer category;
     //private View mStart;
 
     public static MainFragment newInstance() {
@@ -69,8 +73,9 @@ public class MainFragment extends CoreFragment {
         });
 
         btnStart.setOnClickListener(v -> {
-
-            QuizActivity.start(getContext(), 10, 6, "easy");
+            category = spinnerCategory.getSelectedIndex() + 8;
+            spinnerDifficulty.getSelectedIndex();
+            QuizActivity.start(getContext(), seekBar.getProgress(), category, getDifficultyId());
 
             Log.d("ololo", "Start properties - amount:" + seekBar.getProgress()
                     + " category: " + spinnerCategory.getSelectedIndex()
@@ -82,6 +87,24 @@ public class MainFragment extends CoreFragment {
             Intent intent = new Intent(getActivity(), ResultActivity.class);
             startActivity(intent);
         });
+    }
+
+    private String getDifficultyId() {
+        switch (spinnerDifficulty.getSelectedIndex()) {
+            case 0:
+                difficult = null;
+                break;
+            case 1:
+                difficult = "easy";
+                break;
+            case 2:
+                difficult = "medium";
+                break;
+            case 3:
+                difficult = "hard";
+                break;
+        }
+        return difficult;
     }
 
     @Override

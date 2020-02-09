@@ -23,6 +23,12 @@ public class QuizViewModel extends ViewModel {
     SingleLiveEvent<Integer> openResultEvent = new SingleLiveEvent<>();
     SingleLiveEvent<Void> finishEvent = new SingleLiveEvent<>();
 
+    private Integer count;
+
+    public QuizViewModel() {
+        currentQuestionPosition.setValue(1);
+        count = 1;
+    }
 
     void init(int amount, Integer category, String difficulty) {
         quizApiClient.getQuestions(amount, category, difficulty, new IQuizApiClient.QuestionsCallback() {
@@ -31,13 +37,11 @@ public class QuizViewModel extends ViewModel {
                 questions.postValue(result);
                 mQuestions = result;
                 questions.setValue(mQuestions);
-                Log.e("ololo", "onSuccess: " + result.get(0).getAnswers());
-                Log.e("ololo", result.get(0).getAnswers() + "");
             }
 
             @Override
             public void onFailure(Exception e) {
-
+                //
             }
         });
 
@@ -67,11 +71,11 @@ public class QuizViewModel extends ViewModel {
     }
 
     void onBackPressed() {
-        //TODO:
+        currentQuestionPosition.setValue(--count);
     }
 
     void onSkipClick() {
-        //TODO:
+        currentQuestionPosition.setValue(++count);
     }
 
     void onAnswerClick(int position, int selectedAnswerPosition) {
@@ -81,9 +85,7 @@ public class QuizViewModel extends ViewModel {
         // 20, -1
 
         if (mQuestions.size() > position && position >= 0) {
-            mQuestions.get(position)
-                    .setSelectedAnswerPosition(selectedAnswerPosition);
-
+            mQuestions.get(position).setSelectedAnswerPosition(selectedAnswerPosition);
             questions.setValue(mQuestions);
 
             // 20, 17 -> 18
@@ -97,5 +99,10 @@ public class QuizViewModel extends ViewModel {
                 currentQuestionPosition.setValue(position + 1);
             }
         }
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
     }
 }

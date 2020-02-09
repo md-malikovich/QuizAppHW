@@ -21,8 +21,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_back"
+            android:onClick="imgBack_click"
+            android:clickable="true"
             android:layout_marginTop="@dimen/marginTop_24"
-            android:layout_marginStart="@dimen/marginStart_16" />
+            android:layout_marginStart="@dimen/marginStart_16"
+            android:focusable="true" />
 
         <TextView
             android:id="@+id/tvQuizCategory"
@@ -68,7 +71,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/quiz_recycler"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@+id/tvQuizProgress"
@@ -82,6 +85,7 @@
         android:visibility="visible"
         android:textColor="@color/colorWhite"
         android:text="SKIP"
+        android:onClick="btnBack_click"
         android:background="@drawable/rounded_btn_pink"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
