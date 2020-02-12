@@ -3,6 +3,7 @@ package com.e.quizapphw.presentation.quiz;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,19 +30,9 @@ import java.util.List;
 
 public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Listener {
 
-    //region Static
     private static String EXTRA_AMOUNT = "amount";
     private static String EXTRA_CATEGORY = "category";
     private static String EXTRA_DIFFICULTY = "difficulty";
-
-    public static void start(Context context, Integer amount, Integer category, String difficulty) {
-        Intent intent = new Intent(context, QuizActivity.class);
-        intent.putExtra(EXTRA_AMOUNT, amount);
-        intent.putExtra(EXTRA_CATEGORY, category);
-        intent.putExtra(EXTRA_DIFFICULTY, difficulty);
-        context.startActivity(intent);
-    }
-    //endregion
 
     private RecyclerView recyclerView;
     private ProgressBar progressBarQuiz;
@@ -57,6 +48,14 @@ public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Li
     private String difficulty;
     private int amount;
     private int amountQuantity;
+
+    public static void start(Context context, Integer amount, Integer category, String difficulty) {
+        Intent intent = new Intent(context, QuizActivity.class);
+        intent.putExtra(EXTRA_AMOUNT, amount);
+        intent.putExtra(EXTRA_CATEGORY, category);
+        intent.putExtra(EXTRA_DIFFICULTY, difficulty);
+        context.startActivity(intent);
+    }
 
     @SuppressLint({"ClickableViewAccessibility", "SetTextI18n"})
     @Override
@@ -92,7 +91,7 @@ public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Li
             }
         };
         recyclerView.setLayoutManager(manager);
-        adapter = new QuizAdapter(this); //adapter = new QuizAdapter(this);
+        adapter = new QuizAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setOnTouchListener((v, event) -> true);
     }
@@ -122,6 +121,7 @@ public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Li
         viewModel.init(amount, category, difficulty);
         viewModel.questions.observe(this, questions -> {
             questionsList = questions;
+            questionsList.get(0).setAnswered(false);
             adapter.updateQuestion(questions);
             getPosition();
         });
@@ -152,6 +152,16 @@ public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Li
             viewModel.onSkipClick();
         } else {
             ResultActivity.start(this);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (progressBarQuiz.getProgress() != 1) {
+            viewModel.onBackPressed();
+        } else {
+            MainActivity.start(this);
+            finish();
         }
     }
 

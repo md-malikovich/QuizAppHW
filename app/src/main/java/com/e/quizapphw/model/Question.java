@@ -6,22 +6,16 @@ import java.util.List;
 public class Question {
 
     private String category;
-
     private EType type;
-
     private EDifficulty difficulty;
-
     private String question;
-
     @SerializedName("correct_answer")
     private String correctAnswer;
-
     @SerializedName("incorrect_answers")
     private List<String> incorrectAnswers;
-
     private List<String> answers;
-
     private Integer selectedAnswerPosition;
+    private boolean isAnswered;
 
     public Question(String category, EType type, EDifficulty difficulty, String question, String correctAnswer, List<String> incorrectAnswers) {
         this.category = category;
@@ -94,5 +88,13 @@ public class Question {
 
     public void setSelectedAnswerPosition(Integer selectedAnswerPosition) {
         this.selectedAnswerPosition = selectedAnswerPosition;
+    }
+
+    public boolean isAnswered() {
+        return isAnswered;
+    }
+
+    public void setAnswered(boolean answered) {
+        isAnswered = answered;
     }
 }

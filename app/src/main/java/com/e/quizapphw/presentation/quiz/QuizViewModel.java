@@ -1,7 +1,6 @@
 package com.e.quizapphw.presentation.quiz;
 
 import android.util.Log;
-
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import com.e.quizapphw.App;
