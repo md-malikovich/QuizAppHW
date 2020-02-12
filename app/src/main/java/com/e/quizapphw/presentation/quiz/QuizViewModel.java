@@ -19,6 +19,7 @@ public class QuizViewModel extends ViewModel {
 
     MutableLiveData<List<Question>> questions = new MutableLiveData<>();
     MutableLiveData<Integer> currentQuestionPosition = new MutableLiveData<>();
+    //MutableLiveData<Boolean> isLoading = new MutableLiveData<>(); //TODO:
 
     SingleLiveEvent<Integer> openResultEvent = new SingleLiveEvent<>();
     SingleLiveEvent<Void> finishEvent = new SingleLiveEvent<>();
@@ -31,18 +32,23 @@ public class QuizViewModel extends ViewModel {
     }
 
     void init(int amount, Integer category, String difficulty) {
+        //currentQuestionPosition.setValue(0); //TODO:
+        //isLoading.setValue(true); //TODO:
+
         quizApiClient.getQuestions(amount, category, difficulty, new IQuizApiClient.QuestionsCallback() {
             @Override
             public void onSuccess(List<Question> result) {
+                //isLoading.setValue(false); //TODO:
                 questions.postValue(result);
                 mQuestions = result;
                 questions.setValue(mQuestions);
-                //currentQuestionPosition.setValue(0);
             }
 
             @Override
             public void onFailure(Exception e) {
                 //
+                //isLoading.setValue(false); //TODO:
+                //Log.d("ololo", "Error@" + e.getMessage()); //TODO:
             }
         });
 

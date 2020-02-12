@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class QuizRepository implements IHistoryStorage, IQuizApiClient {
+public abstract class QuizRepository implements IHistoryStorage, IQuizApiClient {
 
     private IQuizApiClient quizApiClient;
     private IHistoryStorage historyStorage;
@@ -81,17 +81,17 @@ public class QuizRepository implements IHistoryStorage, IQuizApiClient {
 
     @Override
     public void getTriviaCategories(TriviaCategoriesCallback triviaCategoriesCallback) {
-
+        //
     }
 
     @Override
     public void getCountGlobal(CountGlobalCallback callback) {
-
+        //
     }
 
     @Override
     public void getQuestionCount(Integer category, QuestionCountCallback questionCount) {
-
+        //
     }
 }
 

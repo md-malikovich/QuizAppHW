@@ -2,6 +2,7 @@ package com.e.quizapphw.data.history;
 
 import androidx.lifecycle.LiveData;
 
+import com.e.quizapphw.model.History;
 import com.e.quizapphw.model.QuizResult;
 
 import java.util.List;
@@ -12,6 +13,8 @@ public interface IHistoryStorage {
     int saveQuizResult(QuizResult quizResult);
 
     LiveData<List<QuizResult>> getAll();
+
+    LiveData<List<History>> getAllHistory();
 
     void delete(int id);
 

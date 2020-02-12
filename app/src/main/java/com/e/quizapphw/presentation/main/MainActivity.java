@@ -106,12 +106,12 @@ public class MainActivity extends AppCompatActivity {
 //        App.quizApiClient.getTriviaCategories(new IQuizApiClient.TriviaCategoriesCallback() {
 //            @Override
 //            public void onSuccess(List<TriviaCategory> triviaCategories) {
-//                //TODO:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//                //TODO:
 //            }
 //
 //            @Override
 //            public void onFailure(Exception e) {
-//                //TODO:!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//                //TODO:
 //            }
 //        });
     }

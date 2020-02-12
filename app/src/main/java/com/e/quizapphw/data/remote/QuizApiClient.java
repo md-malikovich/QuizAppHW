@@ -43,17 +43,17 @@ public class QuizApiClient implements IQuizApiClient{
 
     @Override
     public void getTriviaCategories(TriviaCategoriesCallback triviaCategoriesCallback) {
-
+        //
     }
 
     @Override
     public void getCountGlobal(CountGlobalCallback callback) {
-
+        //
     }
 
     @Override
     public void getQuestionCount(Integer category, QuestionCountCallback questionCount) {
-
+        //
     }
 
     private interface TriviaApi {
