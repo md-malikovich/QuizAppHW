@@ -1,9 +1,7 @@
 package com.e.quizapphw.data.remote;
 
 import android.util.Log;
-
 import com.e.quizapphw.core.CoreCallback;
-
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -17,7 +15,6 @@ public class QuizApiClient implements IQuizApiClient{
                 .build();
 
     private TriviaApi client = retrofit.create(TriviaApi.class);
-    //private QuizApiTriviaCategories client2 = retrofit.create(QuizApiTriviaCategories.class);
 
     @Override
     public void getQuestions(int amount, Integer category, String difficulty, final QuestionsCallback callback) {
@@ -26,7 +23,7 @@ public class QuizApiClient implements IQuizApiClient{
                 category,
                 difficulty
         );
-        Log.e("-----------", "URL - " + call.request().url());
+        Log.e("ololo", "URL - 1: " + call.request().url());
 
         call.enqueue(new CoreCallback<QuizQuestionsResponse>() {
             @Override
@@ -42,26 +39,73 @@ public class QuizApiClient implements IQuizApiClient{
     }
 
     @Override
-    public void getTriviaCategories(TriviaCategoriesCallback triviaCategoriesCallback) {
-        //
+    public void getTriviaCategories(TriviaCategoriesCallback callback) {
+        final Call<QuizCategoriesResponse> call = client.getCategories();
+        Log.e("ololo", "URL - 2: " + call.request().url());
+        call.enqueue(new CoreCallback<QuizCategoriesResponse>() {
+            @Override
+            public void onSuccess(QuizCategoriesResponse result) {
+                callback.onSuccess(result.getTriviaCategories());
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                callback.onFailure(e);
+            }
+        });
     }
 
     @Override
     public void getCountGlobal(CountGlobalCallback callback) {
-        //
+        final Call<QuizGlobalResponse> call = client.getCountGlobal();
+        Log.e("ololo", "URL - 3: " + call.request().url());
+        call.enqueue(new CoreCallback<QuizGlobalResponse>() {
+            @Override
+            public void onSuccess(QuizGlobalResponse result) {
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                callback.onFailure(e);
+            }
+        });
     }
 
     @Override
     public void getQuestionCount(Integer category, QuestionCountCallback questionCount) {
-        //
+        Call<QuizQuestionCount> call = client.getQuestionsCount(category);
+        call.enqueue(new CoreCallback<QuizQuestionCount>() {
+            @Override
+            public void onSuccess(QuizQuestionCount result) {
+                questionCount.onSuccess(result);
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                questionCount.onFailure(e);
+            }
+        });
     }
 
     private interface TriviaApi {
+
         @GET("api.php")
         Call<QuizQuestionsResponse> getQuestions(
                 @Query("amount") int amount,
                 @Query("category") Integer category,
                 @Query("difficulty") String difficulty);
+
+        @GET("api_category.php")
+        Call<QuizCategoriesResponse> getCategories();
+
+        @GET("api_count_global.php")
+        Call<QuizGlobalResponse> getCountGlobal();
+
+        @GET("api_count.php")
+        Call<QuizQuestionCount> getQuestionsCount(
+                @Query("category") Integer category
+        );
     }
 
 //    @Override

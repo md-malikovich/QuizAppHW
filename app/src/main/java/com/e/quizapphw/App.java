@@ -1,6 +1,7 @@
 package com.e.quizapphw;
 
 import android.app.Application;
+import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Room;
@@ -20,10 +21,13 @@ public class App extends Application {
     public static IQuizApiClient quizApiClient;
     public static IHistoryStorage historyStorage;
     public static QuizDatabase quizDatabase;
+    public static QuizRepository repository;
+    //public static Context instance;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        //instance = this;
 
         //quizApiClient = new QuizApiClient();
         //historyStorage = new HistoryStorage();
@@ -31,10 +35,24 @@ public class App extends Application {
         quizDatabase = Room.databaseBuilder(
                 this,
                 QuizDatabase.class,
-                "quiz.db").fallbackToDestructiveMigration()
+                "quiz.db")
+                .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()
                 .build();
 
-        QuizRepository repository = new QuizRepository(
+        repository = new QuizRepository(
+                new QuizApiClient(),
+                new HistoryStorage(quizDatabase.historyDao())
+        ) {
+            @Override
+            public LiveData<List<History>> getAllHistory() {
+                return null;
+            }
+        };
+
+        quizDatabase.historyDao();
+
+        repository = new QuizRepository(
                 //quizApiClient,
                 //historyStorage
                 new QuizApiClient(),

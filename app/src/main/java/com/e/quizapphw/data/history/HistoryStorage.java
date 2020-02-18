@@ -13,8 +13,8 @@ import java.util.concurrent.Executors;
 
 public class HistoryStorage implements IHistoryStorage { //логика работы с room
 
-    public HistoryDao dao; //TODO
-    private Executor executor = Executors.newSingleThreadExecutor();
+    public HistoryDao dao;
+    //private Executor executor = Executors.newSingleThreadExecutor();
 
     public HistoryStorage (HistoryDao historyDao) {
         dao = historyDao;
@@ -40,19 +40,33 @@ public class HistoryStorage implements IHistoryStorage { //логика рабо
         return Transformations.map(getAll(), quizResults -> {
             ArrayList<History> histories = new ArrayList<>();
 
-            //TODO: fill histories
-
+            if (quizResults.size() > 0) { //TODO:!!!
+                for (int i = 0; i < quizResults.size(); i++) {
+                    histories.add(i, new History(
+                            quizResults.get(i).getCategory(),
+                            quizResults.get(i).getDifficulty(),
+                            quizResults.get(i).getCorrectAnswersAmount(),
+                            quizResults.get(i).getCreatedAt(),
+                            quizResults.get(i).getQuestions().size(),
+                            quizResults.get(i).getId()));
+                }
+            }
             return histories;
         });
     }
 
     @Override
-    public void delete(int id) {
-        //dao.deleteAll;
+    public void delete(QuizResult quizResult) {
+        dao.delete(quizResult);
+    }
+
+    @Override
+    public void deleteById(int id) {
+        dao.deleteById(id);
     }
 
     @Override
     public void deleteAll() {
-        //
+        dao.deleteAll();
     }
 }

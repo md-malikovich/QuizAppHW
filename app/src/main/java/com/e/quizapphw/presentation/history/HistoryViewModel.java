@@ -11,16 +11,16 @@ import java.util.List;
 public class HistoryViewModel extends ViewModel {
 
     private List<History> mHistory;
-    public MutableLiveData<String> history = new MutableLiveData<>();
+    //public LiveData<List<History>> history = App.historyStorage.getAllHistory(); //TODO:!!!
+    //public MutableLiveData<List<History>> history = new MutableLiveData<>();
+    public LiveData<List<History>> history = App.historyStorage.getAllHistory();
 
-    public LiveData<List<History>> history1 = App.historyStorage.getAllHistory();
 
     void onHistoryClick(int position) {
         mHistory.get(position);
     }
 
     public HistoryViewModel() {
-        history.setValue("First");
+        //history.setValue("First");
     }
 }
-//TODO:!!!

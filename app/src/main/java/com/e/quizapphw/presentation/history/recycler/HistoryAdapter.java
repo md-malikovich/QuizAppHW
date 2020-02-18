@@ -10,13 +10,24 @@ import com.e.quizapphw.R;
 import com.e.quizapphw.model.History;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolder> {
 
-    private ArrayList<History> historyList = new ArrayList<>();
+    private List<History> historyList = new ArrayList<>();
+    private HistoryViewHolder.Listener listener;
+
+    public HistoryAdapter(HistoryViewHolder.Listener listener) {
+        this.listener = listener;
+    }
 
     public void add(History story) {
         historyList.add(story);
+        notifyDataSetChanged();
+    }
+
+    public void updateHistory(List<History> list) {
+        this.historyList = list;
         notifyDataSetChanged();
     }
 
@@ -24,12 +35,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolder> {
     @Override
     public HistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.history_view_holder, parent, false);
-        return new HistoryViewHolder(view);
+        return new HistoryViewHolder(view, listener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HistoryViewHolder holder, int position) {
-        holder.onBind(historyList, position);
+        holder.onBind(historyList.get(position));
     }
 
     @Override

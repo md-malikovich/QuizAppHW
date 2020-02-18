@@ -92,7 +92,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvQuizQuestion"
         android:layout_height="320dp">
         <Button
-            android:id="@+id/btnAnswer11"
+            android:id="@+id/booleanBtnTrue"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -104,7 +104,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvQuizQuestion" />
 
         <Button
-            android:id="@+id/btnAnswer22"
+            android:id="@+id/booleanBtnFalse"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="34dp"

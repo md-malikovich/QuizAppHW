@@ -1,7 +1,9 @@
 package com.e.quizapphw.data.remote;
 
 import com.e.quizapphw.core.IBaseCallback;
+import com.e.quizapphw.model.Global;
 import com.e.quizapphw.model.Question;
+import com.e.quizapphw.model.QuestionCount;
 import com.e.quizapphw.model.TriviaCategory;
 
 import java.util.List;
@@ -27,12 +29,13 @@ public interface IQuizApiClient {
     }
 
     interface CountGlobalCallback extends IBaseCallback<QuizGlobalResponse> {
-        //
+//        void onSuccess (List<Global> triviaCategories);
+//        void onFailure(Exception e);
     }
 
     interface QuestionCountCallback extends IBaseCallback<QuizQuestionCount> {
-        //
+//        void onSuccess (List<QuestionCount> triviaCategories);
+//        void onFailure(Exception e);
     }
-
 }
 

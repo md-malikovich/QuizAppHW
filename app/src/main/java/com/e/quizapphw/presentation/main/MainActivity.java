@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
@@ -18,6 +19,8 @@ import com.e.quizapphw.presentation.history.HistoryFragment;
 import com.e.quizapphw.model.Question;
 import com.e.quizapphw.presentation.settings.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -57,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
 
         navView = findViewById(R.id.nav_view);
         setBottomNavigationView();
+
+        mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        mViewModel.getCategories();
+        mViewModel.getGlobal();
+        mViewModel.getQuestionsCount(9);
     }
 
     private void setBottomNavigationView() {
@@ -118,9 +126,17 @@ public class MainActivity extends AppCompatActivity {
 
     private class MainPagerAdapter extends FragmentPagerAdapter {
 
+//        private List<Fragment> Fragment = new ArrayList<>(); //Fragment List
+//        private List<String> NamePage = new ArrayList<>();
+
         public MainPagerAdapter(FragmentManager fm) {
             super(fm);
         }
+
+//        public void add(Fragment Frag, String Title) {
+//            Fragment.add(Frag);
+//            NamePage.add(Title);
+//        }
 
         @Override
         public Fragment getItem(int position) {
@@ -139,6 +155,11 @@ public class MainActivity extends AppCompatActivity {
             }
             return fragment;
         }
+
+//        @Override
+//        public CharSequence getPageTitle(int position) {
+//            return NamePage.get(position);
+//        }
 
         @Override
         public int getCount() {

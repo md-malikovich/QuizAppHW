@@ -16,7 +16,9 @@ public interface IHistoryStorage {
 
     LiveData<List<History>> getAllHistory();
 
-    void delete(int id);
+    void delete(QuizResult quizResult);
 
     void deleteAll();
+
+    void deleteById(int id);
 }

@@ -7,7 +7,7 @@ import com.e.quizapphw.model.QuizResult;
 
 @Database(
         entities = {QuizResult.class},
-        version = 1,
+        version = 1, //TODO: change version
         exportSchema = false)
 
 public abstract class QuizDatabase extends RoomDatabase {

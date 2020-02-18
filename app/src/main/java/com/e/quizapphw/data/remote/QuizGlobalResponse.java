@@ -2,7 +2,6 @@ package com.e.quizapphw.data.remote;
 
 import com.e.quizapphw.model.Global;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.Map;
 
 public class QuizGlobalResponse {

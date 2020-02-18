@@ -17,7 +17,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.e.quizapphw.App;
 import com.e.quizapphw.R;
 import com.e.quizapphw.model.Question;
 import com.e.quizapphw.presentation.main.MainActivity;
@@ -40,6 +42,7 @@ public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Li
     private QuizAdapter adapter;
     private Button btnSkip;
     private ImageView imgBack;
+    private ConstraintLayout layout;
 
     private List<Question> questionsList = new ArrayList<>();
 
@@ -127,6 +130,7 @@ public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Li
         });
     }
 
+    @SuppressLint("SetTextI18n")
     private void getPosition() {
         viewModel.currentQuestionPosition.observe(this, integer -> {
             recyclerView.scrollToPosition(integer - 1);
@@ -136,6 +140,24 @@ public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Li
             if (questionsList.size() > 0)
                 tvQuizCategory.setText(questionsList.get(integer - 1).getCategory());
         });
+
+        //try {
+//            viewModel.currentQuestionPosition.observe(this, integer -> {
+//                recyclerView.scrollToPosition(integer);
+//                tvQuizProgress.setText(integer + 1 + "/" + amount);
+//                progressBarQuiz.setProgress(integer + 1);
+//                progressBarQuiz.setMax(amount);
+//                tvQuizCategory.setText(questionsList.get(integer).getCategory());
+//                if (integer + 1 == questionsList.size()) {
+//                    btnSkip.setText("Finish");
+//                } else {
+//                    btnSkip.setText("Skip");
+//                }
+//            });
+        //} catch (IndexOutOfBoundsException e) {
+//            layout.setVisibility(View.INVISIBLE);
+//            finish();
+        //}
     }
 
     public void imgBack_click(View view) {
@@ -151,12 +173,12 @@ public class QuizActivity extends AppCompatActivity implements QuizViewHolder.Li
         if (progressBarQuiz.getProgress() < amount) {
             viewModel.onSkipClick();
         } else {
-            ResultActivity.start(this);
+            ResultActivity.start(this, 0);
         }
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() { //TODO: !!!
         if (progressBarQuiz.getProgress() != 1) {
             viewModel.onBackPressed();
         } else {

@@ -45,13 +45,25 @@
             android:id="@+id/tvResult_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Category: Mixed"
+            android:text="Category: "
             android:fontFamily="@font/sf_pro_display_regular"
             android:textColor="@color/colorBlack"
             android:textSize="17sp"
             android:textStyle="bold"
             android:layout_marginTop="@dimen/marginTop_22"
             android:layout_marginStart="104dp" />
+
+        <TextView
+            android:id="@+id/tvResult_category2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mixed"
+            android:fontFamily="@font/sf_pro_display_regular"
+            android:textColor="@color/colorBlack"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/marginTop_22"
+            android:layout_marginStart="186dp" />
 
         <TextView
             android:id="@+id/tvResult_difficulty"
